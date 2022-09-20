@@ -1,1 +1,1 @@
-# python_patterns
+* [Factory method](factory_method.py)
