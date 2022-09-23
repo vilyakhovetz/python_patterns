@@ -68,11 +68,14 @@ class ManualBuilder(Builder):
 # The director knows in what sequence to make the builder work. It works with it through a common builder interface.
 # Because of this, he may not know what specific product is being built.
 class Director:
-    def build_sports_car(self, builder):
-        builder.reset()
-        builder.set_seats(2)
-        builder.set_engine('V8')
-        builder.set_gps(True)
+    def __init__(self, builder):
+        self.__builder = builder
+
+    def build_sports_car(self):
+        self.__builder.reset()
+        self.__builder.set_seats(2)
+        self.__builder.set_engine('V8')
+        self.__builder.set_gps(True)
 
 
 # The director receives a specific builder object from the client (application). The application itself knows which
@@ -81,12 +84,12 @@ class Director:
 # The finished product is returned by the builder, since the director most often does not know and does not depend on
 # specific classes of builders and products.
 if __name__ == '__main__':
-    director = Director()
-
     builder1 = CarBuilder()
-    director.build_sports_car(builder1)
+    director = Director(builder1)
+    director.build_sports_car()
     car = builder1.get_result()
 
     builder2 = ManualBuilder()
-    director.build_sports_car(builder2)
+    director = Director(builder2)
+    director.build_sports_car()
     manual = builder2.get_result()
