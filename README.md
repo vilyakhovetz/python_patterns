@@ -2,3 +2,4 @@
 * [Builder](builder.py)
 * [Factory method](factory_method.py)
 * [Prototype](prototype.py)
+* [Singleton](singleton.py)
