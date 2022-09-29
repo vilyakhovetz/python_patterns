@@ -68,9 +68,11 @@ class LinuxGUI(GUI):
 # Depending on the configuration (or other conditions), select the desired factory.
 if __name__ == '__main__':
     from sys import platform
+
     if platform == 'win32':
         gui = WindowsGUI()
+        gui.render_gui()
+
     if platform == 'linux':
         gui = LinuxGUI()
-
-    gui.render_gui()
+        gui.render_gui()

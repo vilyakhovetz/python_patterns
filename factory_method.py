@@ -54,9 +54,11 @@ class LinuxMenu(Menu):
 # Depending on the configuration (or other conditions), select the desired factory.
 if __name__ == '__main__':
     from sys import platform
+
     if platform == 'win32':
         menu = WindowsMenu()
+        menu.render_menu()
+
     if platform == 'linux':
         menu = LinuxMenu()
-
-    menu.render_menu()
+        menu.render_menu()

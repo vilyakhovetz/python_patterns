@@ -6,39 +6,40 @@
 
 class Remote:
     def __init__(self, device):
-        self.__device = device
+        self.device = device
 
     def toggle_power(self):
-        if self.__device.is_enabled():
-            self.__device.disable()
+        if self.device.is_enabled():
+            self.device.disable()
         else:
-            self.__device.enable()
+            self.device.enable()
 
     def volume_down(self):
-        self.__device.set_volume(self.__device.get_volume() - 10)
+        self.device.set_volume(self.device.get_volume() - 10)
 
     def volume_up(self):
-        self.__device.set_volume(self.__device.get_volume() + 10)
+        self.device.set_volume(self.device.get_volume() + 10)
 
     def channel_down(self):
-        self.__device.set_channel(self.__device.get_channel() - 1)
+        self.device.set_channel(self.device.get_channel() - 1)
 
     def channel_up(self):
-        self.__device.set_channel(self.__device.get_channel() + 1)
+        self.device.set_channel(self.device.get_channel() + 1)
 
 
 # You can extend Remote class without touching Device code.
 class AdvancedRemote(Remote):
-    def __init__(self, device):
-        super().__init__(device)
-        self.__device = device
-
     def mute(self):
-        self.__device.set_volume(0)
+        self.device.set_volume(0)
 
 
 # All Devices share a common interface. Therefore, any Remote can work with them.
 class Device:
+    def __init__(self):
+        self.is_enabled = False
+        self.volume = 0
+        self.channel = 0
+
     def is_enabled(self):
         raise NotImplementedError("Method is not implemented!")
 
@@ -63,59 +64,49 @@ class Device:
 
 # But each Device has a special implementation.
 class TV(Device):
-    def __init__(self):
-        self.__is_enabled = False
-        self.__volume = 0
-        self.__channel = 0
-
     def is_enabled(self):
-        return self.__is_enabled
+        return self.is_enabled
 
     def enable(self):
-        self.__is_enabled = True
+        self.is_enabled = True
 
     def disable(self):
-        self.__is_enabled = False
+        self.is_enabled = False
 
     def set_volume(self, percent):
-        self.__volume = percent
+        self.volume = percent
 
     def get_volume(self):
-        return self.__volume
+        return self.volume
 
     def set_channel(self, channel):
-        self.__channel = channel
+        self.channel = channel
 
     def get_channel(self):
-        return self.__channel
+        return self.channel
 
 
 class Radio(Device):
-    def __init__(self):
-        self.__is_enabled = False
-        self.__volume = 0
-        self.__channel = 0
-
     def is_enabled(self):
-        return self.__is_enabled
+        return self.is_enabled
 
     def enable(self):
-        self.__is_enabled = True
+        self.is_enabled = True
 
     def disable(self):
-        self.__is_enabled = False
+        self.is_enabled = False
 
     def set_volume(self, percent):
-        self.__volume = percent
+        self.volume = percent
 
     def get_volume(self):
-        return self.__volume
+        return self.volume
 
     def set_channel(self, channel):
-        self.__channel = channel
+        self.channel = channel
 
     def get_channel(self):
-        return self.__channel
+        return self.channel
 
 
 if __name__ == '__main__':

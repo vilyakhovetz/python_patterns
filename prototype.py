@@ -3,27 +3,27 @@ class Shape:
     # Copying of all fields of the object occurs in the constructor.
     def __init__(self, source=None):
         if source is not None:
-            self.__x = source.__x
-            self.__y = source.__y
-            self.__color = source.__color
+            self.x = source.x
+            self.y = source.y
+            self.color = source.color
 
     def get_x(self):
-        return self.__x
+        return self.x
 
     def set_x(self, x):
-        self.__x = x
+        self.x = x
 
     def get_y(self):
-        return self.__y
+        return self.y
 
     def set_y(self, y):
-        self.__y = y
+        self.y = y
 
     def get_color(self):
-        return self.__color
+        return self.color
 
     def set_color(self, color):
-        self.__color = color
+        self.color = color
 
     # The result of a clone operation will always be an object from the Shape class hierarchy.
     def clone(self):
@@ -38,20 +38,20 @@ class Rectangle(Shape):
     def __init__(self, source=None):
         super().__init__(source=source)
         if source is not None:
-            self.__width = source.__width
-            self.__height = source.__height
+            self.width = source.width
+            self.height = source.height
 
     def get_width(self):
-        return self.__width
+        return self.width
 
     def set_width(self, width):
-        self.__width = width
+        self.width = width
 
     def get_height(self):
-        return self.__height
+        return self.height
 
     def set_height(self, height):
-        self.__height = height
+        self.height = height
 
     def clone(self):
         return Rectangle(source=self)
@@ -62,13 +62,13 @@ class Circle(Shape):
         # The call to the parent constructor is needed to copy potential private fields declared in the parent class.
         super().__init__(source=source)
         if source is not None:
-            self.__radius = source.__radius
+            self.radius = source.radius
 
     def get_radius(self):
-        return self.__radius
+        return self.radius
 
     def set_radius(self, radius):
-        self.__radius = radius
+        self.radius = radius
 
     def clone(self):
         return Circle(source=self)
@@ -100,13 +100,13 @@ if __name__ == '__main__':
 
     # An unobvious advantage of the Prototype is that you can clone a set of objects without knowing their concrete
     # classes.
-    shares_copy = []
+    shapes_copy = []
     for shape in shapes:
-        shares_copy.append(shape.clone())
+        shapes_copy.append(shape.clone())
 
     # For example, we don't know what specific objects are inside the shapes array. But thanks to polymorphism,
     # we can blindly clone all objects. The "clone" method of the class that this object is will be executed.
-    print(shares_copy)
+    print(shapes_copy)
     print(rectangle1.get_height() == rectangle2.get_height())
     print(circle1.get_color() == circle2.get_color())
 

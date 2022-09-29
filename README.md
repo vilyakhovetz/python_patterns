@@ -8,3 +8,4 @@
 #### Structural patterns:
 * [Adapter](adapter.py)
 * [Bridge](bridge.py)
+* [Composite](composite.py)

@@ -3,30 +3,30 @@
 # Classes with compatible interfaces: RoundHole and RoundPeg.
 class RoundHole:
     def __init__(self, radius):
-        self.__radius = radius
+        self.radius = radius
 
     def get_radius(self):
-        return self.__radius
+        return self.radius
 
     def fits(self, peg):
-        return self.__radius >= peg.get_radius()
+        return self.radius >= peg.get_radius()
 
 
 class RoundPeg:
     def __init__(self, radius):
-        self.__radius = radius
+        self.radius = radius
 
     def get_radius(self):
-        return self.__radius
+        return self.radius
 
 
 # Old incompatible class SquarePeg
 class SquarePeg:
     def __init__(self, width):
-        self.__width = width
+        self.width = width
 
     def get_width(self):
-        return self.__width
+        return self.width
 
 
 # The adapter allows you to use square pegs and round holes together.
