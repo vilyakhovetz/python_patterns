@@ -10,3 +10,4 @@
 * [Bridge](bridge.py)
 * [Composite](composite.py)
 * [Decorator](decorator.py)
+* [Facade](facade.py)
