@@ -1,3 +1,6 @@
+# Prototype is a creational design pattern which allows you to copy objects without going into details of their
+# implementation.
+
 # Basic prototype
 class Shape:
     # Copying of all fields of the object occurs in the constructor.
